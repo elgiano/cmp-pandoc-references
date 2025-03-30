@@ -8,7 +8,8 @@ local function locate_bib(lines)
 	for _, line in ipairs(lines) do
 		location = string.match(line, 'bibliography: (%g+)')
 		if location then
-			return location
+			local trimmed, _ = location:gsub('^[\'"](.*)[\'"]$', '%1')
+			return trimmed
 		end
 	end
 end
